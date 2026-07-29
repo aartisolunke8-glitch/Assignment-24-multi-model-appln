@@ -5,7 +5,6 @@ import numpy as np
 # Load models
 class_model = joblib.load("classification_model.pkl")
 reg_model = joblib.load("regression_model.pkl")
-preprocessor_reg = joblib.load("preprocessor_reg.pkl")
 st.title("Multi-Model Prediction App")
 
 problem = st.selectbox(
@@ -23,7 +22,6 @@ if problem == "Classification":
 
     if st.button("Predict"):
         data = np.array([[f1, f2, f3, f4, f5, f6, f7]])
-        data = preprocessor_reg.transform(data)
         result = reg_model.predict(data)
         st.success(round(result[0], 2))
 
