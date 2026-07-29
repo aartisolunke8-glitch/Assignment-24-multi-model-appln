@@ -5,6 +5,7 @@ import numpy as np
 # Load models
 class_model = joblib.load("classification_model.pkl")
 reg_model = joblib.load("regression_model.pkl")
+
 st.title("Multi-Model Prediction App")
 
 problem = st.selectbox(
@@ -22,8 +23,8 @@ if problem == "Classification":
 
     if st.button("Predict"):
         data = np.array([[f1, f2, f3, f4]])
-        result = reg_model.predict(data)
-        st.success(round(result[0], 2))
+        result = class_model.predict(data)
+        st.success(result[0])
 
 else:
     st.subheader("Student Math Score Prediction")
@@ -39,4 +40,4 @@ else:
     if st.button("Predict"):
         data = np.array([[f1, f2, f3, f4, f5, f6, f7]])
         result = reg_model.predict(data)
-        st.success(result[0])
+        st.success(round(result[0], 2))
