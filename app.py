@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 import numpy as np
 
-# Load models
+reg_scaler = joblib.load("regression_scaler.pkl")
 class_model = joblib.load("classification_model.pkl")
 reg_model = joblib.load("regression_model.pkl")
 
@@ -39,5 +39,6 @@ else:
 
     if st.button("Predict"):
         data = np.array([[f1, f2, f3, f4, f5, f6, f7]])
+        data = reg_scaler.transform(data)
         result = reg_model.predict(data)
         st.success(round(result[0], 2))
