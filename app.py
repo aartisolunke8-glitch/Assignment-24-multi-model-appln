@@ -21,7 +21,7 @@ if problem == "Classification":
     f4 = st.number_input("Petal Width")
 
     if st.button("Predict"):
-        data = np.array([[f1, f2, f3, f4, f5, f6, f7]])
+        data = np.array([[f1, f2, f3, f4]])
         result = reg_model.predict(data)
         st.success(round(result[0], 2))
 
