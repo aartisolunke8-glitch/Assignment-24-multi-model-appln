@@ -22,3 +22,4 @@ if st.button('Predict'):
         columns=['gender','race/ethnicity','parental level of education','lunch','test preparation course','reading score','writing score'])
     pred = pipe.predict(input_df)
     st.success(f"Predicted Math Score: {pred[0]:.2f} / 100")
+    
